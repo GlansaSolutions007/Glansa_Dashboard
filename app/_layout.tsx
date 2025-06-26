@@ -1,3 +1,4 @@
+import { AuthProvider, useAuth } from '@/context/auth';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
@@ -8,7 +9,6 @@ import { NativeBaseProvider } from 'native-base';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AuthProvider, useAuth } from '../context/auth';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

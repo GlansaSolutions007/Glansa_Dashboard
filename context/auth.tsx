@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { registerForPushNotificationsAsync } from '@/hooks/useNotifications';
-import api from '../utils/api';
+import api from '@/app/utils/api';
 
 type AuthContextType = {
   isLoggedIn: boolean | null;

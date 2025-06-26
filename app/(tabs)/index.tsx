@@ -43,7 +43,7 @@ export default function LeadsScreen() {
           </HStack>
         </Box>
       </Pressable>
-      <Pressable onPress={() => router.push('/Lead/details')} >
+      <Pressable onPress={() => router.push('/Lead/leads')} >
         <Box style={gstyle.Card}>
           <HStack space={4}>
             <Box borderRadius={100} p={3} style={[gstyle.bgprimary]}>
@@ -61,7 +61,7 @@ export default function LeadsScreen() {
           </HStack>
         </Box>
       </Pressable>
-      <Pressable onPress={() => router.push('/Lead/details')} >
+      <Pressable onPress={() => router.push('/Lead/leads')} >
         <Box style={gstyle.Card}>
           <HStack space={4}>
             <Box borderRadius={100} p={3} style={[gstyle.bgprimary]}>
