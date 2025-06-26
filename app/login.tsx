@@ -1,7 +1,7 @@
 // app/login.tsx
 import { useAuth } from './context/auth';
-import { Button, Center, VStack, Box, Heading, FormControl } from 'native-base';
-import { TextInput } from 'react-native';
+import { Button, Center, VStack, Box, Heading, FormControl, NativeBaseProvider, Text } from 'native-base';
+import { Image, TextInput } from 'react-native';
 import React, { useState } from 'react';
 
 export default function LoginScreen() {
@@ -10,30 +10,47 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
 
   return (
-    <Center flex={1} px="4" bg="gray.100">
-      <Box w="100%" maxW="300" bg="white" p="6" rounded="lg" shadow="2">
-        <Heading mb="6" textAlign="center">Login</Heading>
-        <VStack space={4}>
-          <FormControl>
-            <FormControl.Label>Username</FormControl.Label>
-            <TextInput
-              value={username}
-              onChangeText={setUsername}
-              style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ccc', padding: 8 }}
-            />
-          </FormControl>
-          <FormControl>
-            <FormControl.Label>Password</FormControl.Label>
-            <TextInput
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ccc', padding: 8 }}
-            />
-          </FormControl>
-          <Button mt="4" onPress={login}>Login</Button>
-        </VStack>
+
+    <NativeBaseProvider>
+      <Box flex={1} justifyContent="center" alignItems="center" bg="gray.100" px={4}>
+        <Image
+          source={require('../assets/images/gllogo-pl1l6bmjhmx3czxexrdpaod6usjyu1ohofup34yo3o.png')}
+          style={{ width: 120, height: 120, marginBottom: 20 }}
+          resizeMode="contain"
+        />
+        <Box bg="white" p={6} rounded="xl" shadow={2} w="100%" maxW="400">
+          <VStack space={4}>
+            <Heading size="lg" color="primary.600" textAlign="center">
+              Login
+            </Heading>
+            <FormControl>
+              <FormControl.Label>Username</FormControl.Label>
+              <TextInput
+                value={username}
+                onChangeText={setUsername}
+                style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ccc', padding: 8 }}
+              />
+            </FormControl>
+            <FormControl>
+              <FormControl.Label>Password</FormControl.Label>
+              <TextInput
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                style={{ borderWidth: 1, borderRadius: 5, borderColor: '#ccc', padding: 8, color: 'black' }}
+              />
+            </FormControl>
+
+            <Button onPress={login} colorScheme="primary">
+              Sign In
+            </Button>
+
+            <Text textAlign="right" fontSize="sm" color="gray.500">
+              Forgot your password?
+            </Text>
+          </VStack>
+        </Box>
       </Box>
-    </Center>
+    </NativeBaseProvider>
   );
 }

@@ -10,6 +10,7 @@ import { useEffect, useState, useCallback } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { View } from 'react-native';
 import { AuthProvider, useAuth } from './context/auth';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -36,10 +37,10 @@ function LayoutContainer() {
   return (
     <NativeBaseProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
           <Slot />
-          <StatusBar style="auto" />
-        </View>
+          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+        </SafeAreaView>
       </ThemeProvider>
     </NativeBaseProvider>
   );
