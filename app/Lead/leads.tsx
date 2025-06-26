@@ -1,18 +1,21 @@
+import CustomHeader from '@/components/CustomHeader';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import { useRouter } from 'expo-router';
 import {
-    Box,
-    HStack, Icon,
-    Pressable, Spinner,
-    Text, VStack
+  Box,
+  HStack,
+  Icon,
+  Pressable,
+  Spinner,
+  Text,
+  VStack
 } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { FlatList, TextInput } from 'react-native';
-import { gstyle } from "../styles/style";
+import { gstyle } from '../../styles/style';
 
-// Define types
 type Lead = {
   id: number;
   userName: string;
@@ -21,17 +24,16 @@ type Lead = {
   status: string;
 };
 
-type RootStackParamList = {
-  LeadDetails: { lead: Lead };
-};
-
 const Tab = createMaterialTopTabNavigator();
 
 const LeadCard: React.FC<{ lead: Lead }> = ({ lead }) => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const router = useRouter();
 
   const handlePress = () => {
-    navigation.navigate('LeadDetails', { lead });
+    router.push({
+      pathname: '/Lead/leadDetails',
+      params: { lead: JSON.stringify(lead) },
+    });
   };
 
   return (
@@ -103,18 +105,17 @@ const Details: React.FC = () => {
 
   return (
     <Box flex={1} style={gstyle.container}>
-      {/* Search Header */}
+      <CustomHeader title="Leads" />
       <Box style={gstyle.searchinput}>
         <HStack alignItems="center" space={2}>
           <Icon as={Ionicons} name="search-outline" size="sm" color="gray.400" />
           <TextInput
-            // style={gstyle.width100}
             placeholder="Search here..."
+            style={{ flex: 1, paddingVertical: 6 }}
           />
         </HStack>
       </Box>
 
-      {/* Tab Content */}
       {loading ? (
         <Box flex={1} justifyContent="center" alignItems="center">
           <Spinner size="lg" color="primary.500" />

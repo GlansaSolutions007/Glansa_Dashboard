@@ -5,6 +5,8 @@ import { color } from "./theme";
 export const gstyle = {
   container: {
     padding: 8,
+    backgroundColor: color.white,
+    flex: 1,
   },
 
   // color ----------- start
