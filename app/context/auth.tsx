@@ -29,6 +29,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 
   const login = async (username: string, password: string) => {
+    if (!username || !password) {
+      console.error('Username and password are required');
+      return;
+    }
     try {
       const response = await api.post('/Login', { username, password });
 
