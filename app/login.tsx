@@ -41,7 +41,7 @@ export default function LoginScreen() {
               />
             </FormControl>
 
-            <Button onPress={login} colorScheme="primary">
+            <Button onPress={() => login(username, password)} colorScheme="primary">
               Sign In
             </Button>
 
