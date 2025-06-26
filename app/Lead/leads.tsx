@@ -1,4 +1,5 @@
 import CustomHeader from '@/components/CustomHeader';
+import { gstyle } from '@/styles/style';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import axios from 'axios';
@@ -14,7 +15,6 @@ import {
 } from 'native-base';
 import React, { useEffect, useState } from 'react';
 import { FlatList, TextInput } from 'react-native';
-import { gstyle } from '../../styles/style';
 
 type Lead = {
   id: number;

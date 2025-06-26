@@ -1,8 +1,8 @@
 // app/login.tsx
+import { useAuth } from '@/context/auth';
 import { Box, Button, FormControl, Heading, NativeBaseProvider, Text, VStack } from 'native-base';
 import { useState } from 'react';
 import { Image, TextInput } from 'react-native';
-import { useAuth } from '../context/auth';
 
 export default function LoginScreen() {
   const { login } = useAuth();
@@ -41,7 +41,7 @@ export default function LoginScreen() {
               />
             </FormControl>
 
-            <Button onPress={login} colorScheme="primary">
+            <Button onPress={() => login(username, password)} colorScheme="primary">
               Sign In
             </Button>
 

@@ -1,10 +1,12 @@
 // app/context/auth.tsx
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import { registerForPushNotificationsAsync } from '@/hooks/useNotifications';
+import api from '@/app/utils/api';
 
 type AuthContextType = {
   isLoggedIn: boolean | null;
-  login: () => Promise<void>;
+  login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 };
 
@@ -25,9 +27,30 @@ export function AuthProvider({ children }: AuthProviderProps) {
     checkToken();
   }, []);
 
-  const login = async () => {
-    await SecureStore.setItemAsync('token', 'dummy_token');
-    setIsLoggedIn(true);
+
+  const login = async (username: string, password: string) => {
+    if (!username || !password) {
+      console.error('Username and password are required');
+      return;
+    }
+    try {
+      const response = await api.post('/Login', { username, password });
+
+      const token = response.data.token ?? 'dummy_token';
+      await SecureStore.setItemAsync('token', token);
+      setIsLoggedIn(true);
+
+      // Register and upload push token
+      const expoPushToken = await registerForPushNotificationsAsync();
+      if (expoPushToken) {
+        await api.post('/DeviceToken', {
+          username,
+          deviceToken: expoPushToken,
+        });
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   const logout = async () => {

@@ -21,24 +21,6 @@ export async function registerForPushNotificationsAsync(): Promise<string | unde
 
         token = (await Notifications.getExpoPushTokenAsync()).data;
         console.log('Expo Push Token:', token);
-
-        // 👇 Send token to backend
-        try {
-            await fetch('http://93.127.139.216:443/api/DeviceToken', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: "test",
-                    deviceToken: token, 
-                }),
-            });
-        } catch (err) {
-            console.error('Error sending token to backend:', err);
-        }
-    } else {
-        alert('Must use physical device for Push Notifications');
     }
 
     if (Platform.OS === 'android') {
