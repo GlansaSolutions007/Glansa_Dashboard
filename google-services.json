@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "149096987120",
+    "project_id": "glansa-dashboard",
+    "storage_bucket": "glansa-dashboard.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149096987120:android:b97fdcb8880d64b780c535",
+        "android_client_info": {
+          "package_name": "com.glansasol2026.glansa_dashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA--V1lH0joYAyLTFOMu9VWj6XXH-KNazE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
