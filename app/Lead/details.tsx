@@ -1,16 +1,15 @@
 import { Ionicons } from '@expo/vector-icons';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import {
     Box,
-    FlatList,
     HStack, Icon,
     Pressable, Spinner,
     Text, VStack
 } from 'native-base';
 import React, { useEffect, useState } from 'react';
-import { TextInput } from 'react-native';
-// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { FlatList, TextInput } from 'react-native';
 import { gstyle } from "../styles/style";
 
 // Define types
@@ -109,7 +108,7 @@ const Details: React.FC = () => {
         <HStack alignItems="center" space={2}>
           <Icon as={Ionicons} name="search-outline" size="sm" color="gray.400" />
           <TextInput
-            style={gstyle.width100}
+            // style={gstyle.width100}
             placeholder="Search here..."
           />
         </HStack>
