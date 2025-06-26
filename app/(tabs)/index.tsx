@@ -1,40 +1,84 @@
-import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
-import { Box, Button, Center, Heading, Text, VStack } from 'native-base';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import * as SecureStore from 'expo-secure-store';
-import { useAuth } from '../context/auth';
+import { Box, HStack, Icon, Text, VStack } from 'native-base';
+import { Pressable, SafeAreaView, TextInput } from 'react-native';
+import { gstyle } from "../../styles/style";
 
-export default function HomeScreen() {
-
-  const { logout } = useAuth();
+export default function LeadsScreen() {
   const router = useRouter();
   return (
-    <Center flex={1} bg="gray.100" px="4">
-      <Box w="100%" maxW="400" p="6" bg="white" rounded="2xl" shadow="4">
-        <VStack space={5} alignItems="center">
-          <Heading size="lg" textAlign="center" color="primary.500">
-            Welcome to the Dashboard!
-          </Heading>
-          <Text fontSize="md" color="gray.600" textAlign="center">
-            This is your home screen. You can start exploring the app or log out using the button below.
-          </Text>
-          <Pressable
-            onPress={() => router.push('/leads')}
-            style={{
-              marginTop: 20,
-              padding: 16,
-              backgroundColor: '#4e8cff',
-              borderRadius: 10,
-            }}
-          >
-            <Text style={{ color: 'white' }}>Go to Leads</Text>
-          </Pressable>
-          <Button colorScheme="red" w="full" onPress={logout}>
-            Log Out
-          </Button>
-        </VStack>
+     <SafeAreaView   style={[ gstyle.bgwhite, gstyle.container]}>
+      <Box style={gstyle.searchinput}>
+        <HStack style={[gstyle.borderRadius]}  ml={2} space={2}>
+          <Icon
+            as={Ionicons}
+            name="search-outline"
+            size="sm"
+            // style={gstyle.neutral500}
+          />
+          <TextInput
+            placeholder="Search here..."
+            placeholderTextColor="#888"
+            // width="100%"
+            style={[gstyle.f3]}
+          />
+        </HStack>
       </Box>
-    </Center>
+
+      <Pressable  onPress={() => router.push('/Lead/leads')} >
+        <Box style={gstyle.Card}>
+          <HStack space={4}>
+            <Box borderRadius={100} p={3} style={[gstyle.bgprimary]}>
+              <Icon
+                as={Ionicons}
+                name="briefcase-outline"
+                size="md"
+                // style={gstyle.white}
+              />
+            </Box>
+            <VStack>
+              <Text style={[gstyle.f4, gstyle.primary]}>Marketing</Text>
+              <Text style={[gstyle.f2, gstyle.secondary]}>Department</Text>
+            </VStack>
+          </HStack>
+        </Box>
+      </Pressable>
+      <Pressable onPress={() => router.push('/Lead/details')} >
+        <Box style={gstyle.Card}>
+          <HStack space={4}>
+            <Box borderRadius={100} p={3} style={[gstyle.bgprimary]}>
+              <Icon
+                as={Ionicons}
+                name="briefcase-outline"
+                size="md"
+                // style={gstyle.white}
+              />
+            </Box>
+            <VStack>
+              <Text style={[gstyle.f4, gstyle.primary]}>Sales</Text>
+              <Text style={[gstyle.f2, gstyle.secondary]}>Department</Text>
+            </VStack>
+          </HStack>
+        </Box>
+      </Pressable>
+      <Pressable onPress={() => router.push('/Lead/details')} >
+        <Box style={gstyle.Card}>
+          <HStack space={4}>
+            <Box borderRadius={100} p={3} style={[gstyle.bgprimary]}>
+              <Icon
+                as={Ionicons}
+                name="briefcase-outline"
+                size="md"
+                // style={gstyle.white}
+              />
+            </Box>
+            <VStack>
+              <Text style={[gstyle.f4, gstyle.primary]}>Cleaning</Text>
+              <Text style={[gstyle.f2, gstyle.secondary]}>Department</Text>
+            </VStack>
+          </HStack>
+        </Box>
+      </Pressable>
+    </SafeAreaView>
   );
 }
