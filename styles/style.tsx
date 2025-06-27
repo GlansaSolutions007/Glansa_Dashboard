@@ -4,7 +4,7 @@ import { color } from "./theme";
 
 export const gstyle = {
   container: {
-    padding: 8,
+    padding: 10,
     backgroundColor: color.white,
     flex: 1,
   },
