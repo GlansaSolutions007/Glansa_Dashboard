@@ -33,7 +33,7 @@ export default function LeadsScreen() {
                 as={Ionicons}
                 name="briefcase-outline"
                 size="md"
-                // style={gstyle.white}
+                color={'white'}
               />
             </Box>
             <VStack>
@@ -51,7 +51,7 @@ export default function LeadsScreen() {
                 as={Ionicons}
                 name="briefcase-outline"
                 size="md"
-                // style={gstyle.white}
+                color={'white'}
               />
             </Box>
             <VStack>
@@ -69,7 +69,7 @@ export default function LeadsScreen() {
                 as={Ionicons}
                 name="briefcase-outline"
                 size="md"
-                // style={gstyle.white}
+                color={'white'}
               />
             </Box>
             <VStack>

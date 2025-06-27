@@ -11,7 +11,7 @@ export default function TabTwoScreen() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: 'test', // Make sure this matches the token's stored username
+          username: 'Admin', // Make sure this matches the token's stored username
           title: '🚀 Test Notification',
           body: 'This notification was sent via backend!',
           data: { customData: 'your_custom_payload' },
